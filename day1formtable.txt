@@ -1,0 +1,202 @@
+Great! Here's a **complete and detailed explanation** of **HTML Forms and Tables** to include in your **Day 1 training session**, along with live examples, notes, and hands-on practice.
+
+---
+
+## 🧾 **Part 3: HTML Forms – Detailed Explanation**
+
+### ✅ What is a Form?
+
+* An HTML **form** is used to **collect user input**.
+* Input can be: text, selections, checkboxes, files, etc.
+* It sends data to a server (or can be processed with JavaScript).
+
+---
+
+### 🧱 Basic Structure
+
+```html
+<form action="/submit" method="POST">
+  <!-- Form inputs go here -->
+</form>
+```
+
+| Attribute | Purpose                                |
+| --------- | -------------------------------------- |
+| `action`  | URL where form data is sent            |
+| `method`  | HTTP method: `GET` (default) or `POST` |
+
+---
+
+### 🧩 Common Form Elements
+
+| Element                              | Usage                          |
+| ------------------------------------ | ------------------------------ |
+| `<input type="text">`                | Single line text input         |
+| `<input type="email">`               | Email input (validates format) |
+| `<input type="password">`            | Password field                 |
+| `<input type="checkbox">`            | Checkbox                       |
+| `<input type="radio">`               | Radio buttons                  |
+| `<input type="file">`                | File upload                    |
+| `<textarea>`                         | Multiline input                |
+| `<select><option>`                   | Dropdown menu                  |
+| `<button>` / `<input type="submit">` | Submit button                  |
+
+---
+
+### ✏️ **Example: Contact Form**
+
+```html
+<form action="/submit" method="POST">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required><br><br>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email"><br><br>
+
+  <label for="message">Message:</label><br>
+  <textarea id="message" name="message" rows="4"></textarea><br><br>
+
+  <label>Gender:</label>
+  <input type="radio" id="male" name="gender" value="male">
+  <label for="male">Male</label>
+  <input type="radio" id="female" name="gender" value="female">
+  <label for="female">Female</label><br><br>
+
+  <label for="skills">Select Skills:</label><br>
+  <input type="checkbox" id="html" name="skills" value="HTML"> HTML
+  <input type="checkbox" id="css" name="skills" value="CSS"> CSS<br><br>
+
+  <label for="country">Country:</label>
+  <select name="country" id="country">
+    <option value="india">India</option>
+    <option value="usa">USA</option>
+  </select><br><br>
+
+  <button type="submit">Submit</button>
+</form>
+```
+
+---
+
+### 🎯 Good Practices
+
+* Use `label` elements with `for` attributes.
+* Use `name` attributes – required for submitting form data.
+* Use `required`, `min`, `max`, `pattern` for validations.
+* Avoid putting form fields outside the `<form>` tag.
+
+---
+
+### 🧪 Hands-on Exercise (Offline)
+
+1. Create a "Job Application Form" with:
+
+   * Full Name
+   * Email
+   * Resume upload
+   * Job Type (dropdown)
+   * Skills (checkboxes)
+   * Submit button
+
+---
+
+## 🗂️ **Part 4: HTML Tables – Detailed Explanation**
+
+### ✅ What is a Table?
+
+* A **table** organizes data in **rows** and **columns**.
+* Defined using the `<table>` tag and its children.
+
+---
+
+### 🧱 Table Structure
+
+| Tag       | Purpose                   |
+| --------- | ------------------------- |
+| `<table>` | Main container            |
+| `<tr>`    | Table row                 |
+| `<th>`    | Table header cell         |
+| `<td>`    | Table data cell           |
+| `<thead>` | Header section (optional) |
+| `<tbody>` | Body section              |
+| `<tfoot>` | Footer section            |
+
+---
+
+### ✏️ **Example: Student Marks Table**
+
+```html
+<table border="1">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Subject</th>
+      <th>Marks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Ravi</td>
+      <td>Math</td>
+      <td>95</td>
+    </tr>
+    <tr>
+      <td>Sneha</td>
+      <td>Science</td>
+      <td>89</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+---
+
+### 🧩 Additional Features
+
+* `colspan` and `rowspan` to merge cells:
+
+```html
+<td colspan="2">Merged Cell</td>
+```
+
+* Styling with CSS:
+
+```html
+<style>
+  table { border-collapse: collapse; width: 100%; }
+  th, td { padding: 10px; border: 1px solid gray; }
+  th { background-color: #f0f0f0; }
+</style>
+```
+
+---
+
+### 🧪 Hands-on Exercise (Offline)
+
+1. Create a **Product Table**:
+
+   * Columns: Product Name, Price, Available, Rating
+   * Include at least 3 rows
+   * Style it with CSS to look like a real price table
+
+---
+
+## ✅ Suggested Schedule Recap for Day 1 (2 to 2.5 Hours Total)
+
+| Topic                 | Duration   |
+| --------------------- | ---------- |
+| Frontend Overview     | 20 mins    |
+| Semantic HTML         | 30–40 mins |
+| Forms                 | 40 mins    |
+| Tables                | 30 mins    |
+| Live Demo + Exercises | 30–40 mins |
+
+---
+
+Would you like me to prepare:
+
+* 🧾 A **PDF or Slides version** of all the above?
+* 🧪 A **VS Code starter file** with examples and TODOs?
+* A **Day 2 topic plan** (e.g., CSS Basics + Box Model)?
+
+Let me know how you'd like to proceed!
