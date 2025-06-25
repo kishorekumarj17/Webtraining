@@ -1,0 +1,38 @@
+Build a simple profile card using HTML and CSS that visually demonstrates all the concepts taught today:
+
+CSS styling using external stylesheets
+
+Use of various CSS selectors
+
+Implementation of CSS Box Model
+
+
+Requirements:
+
+Create a basic webpage with a title "Meet Our Team".
+
+Add a section to hold a profile card.
+
+Inside the card, include:
+
+A circular profile image (use a placeholder or local image)
+
+A name and role (e.g., "Your name – Frontend Developer")
+
+A short bio
+
+An email input field
+
+Apply CSS Concepts: External css file, selectors, box model
+
+Style the card using:
+
+padding to create space inside the card
+
+margin to center the card and give space around
+
+border and border-radius for aesthetics
+
+box-shadow to create depth
+
+Use box-sizing: border-box to manage layout predictably
