@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fun Picker with Confetti</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 40px;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    main {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      max-width: 700px;
+      margin: auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: #444;
+    }
+
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #0078d4;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #005ea2;
+    }
+
+    section, aside {
+      margin-top: 20px;
+      font-size: 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      font-size: 16px;
+      color: #555;
+    }
+
+    ul li::before {
+      content: "👉 ";
+    }
+
+    .highlight {
+      color: #2e8b57;
+      font-weight: bold;
+      font-size: 22px;
+    }
+
+    /* Confetti styling */
+    .confetti {
+      position: absolute;
+      font-size: 24px;
+      animation: float 1.5s ease-out forwards;
+      pointer-events: none;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-200px) rotate(720deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>🎉 Fun Picker with Confetti</h1>
+
+    <button onclick="pickParticipant()">Pick Participant</button>
+    <button onclick="pickGame()">Pick Game</button>
+    <button onclick="reset()">🔁 Reset</button>
+
+    <section id="participantResult">👤 Participant: <em>Not picked yet</em></section>
+    <aside id="gameResult">🎮 Game: <em>Not picked yet</em></aside>
+
+    <section>
+      <h2>🧾 Picked Participants:</h2>
+      <ul id="pickedParticipantsList"></ul>
+    </section>
+
+    <section>
+      <h2>🧾 Picked Games:</h2>
+      <ul id="pickedGamesList"></ul>
+    </section>
+  </main>
+
+  <script>
+    const allParticipants = ["Kishore", "Priya", "Ankit", "Divya", "Ravi", "Meena", "Suresh", "Aisha"];
+    const allGames = [
+      "2 Truths & 1 Lie",
+      "Emoji Story",
+      "Virtual Scavenger Hunt",
+      "Rapid Fire",
+      "Would You Rather",
+      "Guess the Sound",
+      "What’s in the Background?",
+      "Who’s Most Likely To"
+    ];
+
+    let participants = [...allParticipants];
+    let games = [...allGames];
+
+    function pickParticipant() {
+      if (participants.length === 0) {
+        document.getElementById("participantResult").innerHTML = `👤 Participant: <span class="highlight">All picked!</span>`;
+        return;
+      }
+      const index = Math.floor(Math.random() * participants.length);
+      const name = participants.splice(index, 1)[0];
+      document.getElementById("participantResult").innerHTML = `👤 Participant: <span class="highlight">${name}</span>`;
+      const item = document.createElement("li");
+      item.textContent = name;
+      document.getElementById("pickedParticipantsList").appendChild(item);
+      launchConfetti();
+    }
+
+    function pickGame() {
+      if (games.length === 0) {
+        document.getElementById("gameResult").innerHTML = `🎮 Game: <span class="highlight">All played!</span>`;
+        return;
+      }
+      const index = Math.floor(Math.random() * games.length);
+      const game = games.splice(index, 1)[0];
+      document.getElementById("gameResult").innerHTML = `🎮 Game: <span class="highlight">${game}</span>`;
+      const item = document.createElement("li");
+      item.textContent = game;
+      document.getElementById("pickedGamesList").appendChild(item);
+      launchConfetti();
+    }
+
+    function reset() {
+      participants = [...allParticipants];
+      games = [...allGames];
+      document.getElementById("participantResult").innerHTML = `👤 Participant: <em>Not picked yet</em>`;
+      document.getElementById("gameResult").innerHTML = `🎮 Game: <em>Not picked yet</em>`;
+      document.getElementById("pickedParticipantsList").innerHTML = "";
+      document.getElementById("pickedGamesList").innerHTML = "";
+    }
+
+    function launchConfetti() {
+      const emojis = ["🎉", "✨", "🎊", "💥", "🌟", "🥳"];
+      for (let i = 0; i < 15; i++) {
+        const conf = document.createElement("div");
+        conf.classList.add("confetti");
+        conf.style.left = Math.random() * 100 + "vw";
+        conf.style.top = "70%";
+        conf.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        document.body.appendChild(conf);
+        setTimeout(() => conf.remove(), 1500);
+      }
+    }
+  </script>
+</body>
+</html>
