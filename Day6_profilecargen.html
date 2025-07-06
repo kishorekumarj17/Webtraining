@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Card Generator</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f5f5f5;
+      padding: 30px;
+      text-align: center;
+    }
+    form input {
+      padding: 10px;
+      margin: 5px;
+      width: 250px;
+    }
+    #profileCard {
+      margin-top: 30px;
+      display: none;
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 10px;
+      background: white;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #profileCard img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>👤 Profile Card Generator</h1>
+
+  <form id="userForm">
+    <input type="text" id="name" placeholder="Full Name" required><br>
+    <input type="email" id="email" placeholder="Email" required><br>
+    <input type="text" id="job" placeholder="Job Role" required><br>
+    <input type="url" id="image" placeholder="Image URL" required><br>
+    <button type="submit">Generate</button>
+  </form>
+
+  <div id="profileCard">
+    <img id="avatar" src="" alt="User Image">
+    <h2 id="cardName"></h2>
+    <p id="cardEmail"></p>
+    <p id="cardJob"></p>
+  </div>
+
+  <script>
+    const form = document.getElementById("userForm");
+    const card = document.getElementById("profileCard");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      document.getElementById("avatar").src = document.getElementById("image").value;
+      document.getElementById("cardName").textContent = document.getElementById("name").value;
+      document.getElementById("cardEmail").textContent = document.getElementById("email").value;
+      document.getElementById("cardJob").textContent = document.getElementById("job").value;
+
+      card.style.display = "block";
+    });
+  </script>
+
+</body>
+</html>
