@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz Game</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      padding: 40px;
+    }
+    .question {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+    .btn {
+      display: block;
+      margin: 10px auto;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧠 JavaScript Quiz</h1>
+  <div id="quiz">
+    <div class="question" id="questionText"></div>
+    <div id="answers"></div>
+  </div>
+  <p id="score"></p>
+
+  <script>
+    const questions = [
+      {
+        q: "What is the capital of France?",
+        options: ["Berlin", "Madrid", "Paris", "Rome"],
+        answer: "Paris"
+      },
+      {
+        q: "Which language runs in the browser?",
+        options: ["Python", "Java", "C++", "JavaScript"],
+        answer: "JavaScript"
+      },
+      {
+        q: "Which HTML tag is used for paragraphs?",
+        options: ["<div>", "<p>", "<h1>", "<span>"],
+        answer: "<p>"
+      }
+    ];
+
+    let current = 0;
+    let score = 0;
+
+    const questionText = document.getElementById('questionText');
+    const answers = document.getElementById('answers');
+    const scoreBox = document.getElementById('score');
+
+    function showQuestion() {
+      const q = questions[current];
+      questionText.textContent = q.q;
+      answers.innerHTML = '';
+      q.options.forEach(option => {
+        const btn = document.createElement('button');
+        btn.textContent = option;
+        btn.classList.add('btn');
+        btn.onclick = () => checkAnswer(option);
+        answers.appendChild(btn);
+      });
+    }
+
+    function checkAnswer(selected) {
+      if (selected === questions[current].answer) score++;
+      current++;
+      if (current < questions.length) {
+        showQuestion();
+      } else {
+        questionText.textContent = "Quiz Complete!";
+        answers.innerHTML = "";
+        scoreBox.textContent = `Your Score: ${score}/${questions.length}`;
+      }
+    }
+
+    showQuestion();
+  </script>
+</body>
+</html>
