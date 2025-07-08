@@ -1,0 +1,109 @@
+
+
+### **Day 7 – JavaScript: Template Literals, Promises, and Fetch API**
+
+---
+
+### **1. Template Literals**
+
+Template literals allow you to embed expressions and create multi-line strings easily using **backticks (\`)**.
+
+#### **Syntax:**
+
+```js
+const name = "Kishore";
+const greeting = `Hello, ${name}!`;
+console.log(greeting);
+```
+
+#### **Features:**
+
+* Multi-line support
+* Variable interpolation using `${}`
+* Expression evaluation inside the string
+
+#### **Example:**
+
+```js
+const product = "Laptop";
+const price = 45000;
+const message = `You have purchased a ${product} for Rs.${price}.
+Thank you for shopping!`;
+
+console.log(message);
+```
+
+---
+
+### **2. JavaScript Promises**
+
+A **Promise** is a JavaScript object that represents the eventual completion (or failure) of an asynchronous operation.
+
+#### **States of Promise:**
+
+* `pending`: Initial state, neither fulfilled nor rejected.
+* `fulfilled`: The operation completed successfully.
+* `rejected`: The operation failed.
+
+#### **Basic Example:**
+
+```js
+const myPromise = new Promise((resolve, reject) => {
+  let success = true;
+  if (success) {
+    resolve("✅ Promise resolved!");
+  } else {
+    reject("❌ Promise rejected!");
+  }
+});
+
+myPromise
+  .then(result => console.log(result))
+  .catch(error => console.error(error));
+```
+
+#### **Promise with Delay:**
+
+```js
+function delay(ms) {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(`Finished after ${ms}ms`);
+    }, ms);
+  });
+}
+
+delay(2000).then(message => console.log(message));
+```
+
+---
+
+### **3. JavaScript Fetch API**
+
+The **Fetch API** provides a modern, promise-based way to make network requests.
+
+#### **Basic Syntax:**
+
+```js
+fetch("https://api.example.com/data")
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(err => console.error("Error:", err));
+```
+
+#### **Example with Public API:**
+
+```js
+fetch("https://jsonplaceholder.typicode.com/users")
+  .then(response => response.json())
+  .then(users => {
+    users.forEach(user => {
+      console.log(`${user.name} (${user.email})`);
+    });
+  })
+  .catch(err => console.log("Fetch failed", err));
+```
+
+---
+
+
