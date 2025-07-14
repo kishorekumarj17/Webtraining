@@ -1,0 +1,144 @@
+Great! Here's a **detailed Day 10 breakdown** of **React State and Event Handling**, with **simple-to-understand explanations, live examples, and code samples**.
+
+---
+
+## 🧠 **What is State in React?**
+
+**State** is an object that determines how a component behaves and what it renders. Think of it as the **memory** of a component.
+
+### 📌 Characteristics:
+
+* Local to the component
+* Causes re-render when updated
+* Managed using the `useState` hook
+
+---
+
+### 🔰 Example: Simple Counter Using State
+
+```jsx
+import { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0); // declare state
+
+  return (
+    <div>
+      <h2>Count: {count}</h2>
+      <button onClick={() => setCount(count + 1)}>➕ Increment</button>
+    </div>
+  );
+}
+```
+
+### 🧩 How it works:
+
+* `useState(0)` initializes state with `0`
+* `count` is the current value
+* `setCount` is a function to update the value
+* On button click, we update the state → React re-renders
+
+---
+
+## 🖱️ **What is Event Handling in React?**
+
+Event handling lets you respond to user actions like clicks, typing, mouse movements, etc.
+
+React uses **camelCase** syntax and **functions** instead of strings for event handlers.
+
+---
+
+### 💡 Common Event Types
+
+| Event          | Syntax                   | Description                      |
+| -------------- | ------------------------ | -------------------------------- |
+| `onClick`      | `onClick={handler}`      | Fired on button or element click |
+| `onChange`     | `onChange={handler}`     | Fired when input value changes   |
+| `onSubmit`     | `onSubmit={handler}`     | Fired when form is submitted     |
+| `onMouseEnter` | `onMouseEnter={handler}` | Fired when mouse enters element  |
+| `onKeyDown`    | `onKeyDown={handler}`    | Fired on keyboard key press      |
+
+---
+
+### 📝 Example: Input Box with State and onChange
+
+```jsx
+import { useState } from 'react';
+
+function Greeting() {
+  const [name, setName] = useState('');
+
+  const handleInput = (e) => {
+    setName(e.target.value); // update state on typing
+  };
+
+  return (
+    <div>
+      <input type="text" placeholder="Enter your name" onChange={handleInput} />
+      <p>Hello, {name}!</p>
+    </div>
+  );
+}
+```
+
+---
+
+## 🛠️ Hands-On 1: Like Button Toggle
+
+```jsx
+import { useState } from 'react';
+
+function LikeButton() {
+  const [liked, setLiked] = useState(false);
+
+  const toggleLike = () => {
+    setLiked(!liked);
+  };
+
+  return (
+    <div>
+      <button onClick={toggleLike}>
+        {liked ? "❤️ Liked" : "🤍 Like"}
+      </button>
+    </div>
+  );
+}
+```
+
+---
+
+## 🛠️ Hands-On 2: Show/Hide Details
+
+```jsx
+import { useState } from 'react';
+
+function ToggleDetails() {
+  const [show, setShow] = useState(false);
+
+  return (
+    <div>
+      <button onClick={() => setShow(!show)}>
+        {show ? "Hide" : "Show"} Details
+      </button>
+      {show && <p>This is some hidden info! 🎉</p>}
+    </div>
+  );
+}
+```
+
+---
+
+## 🎯 Concepts Recap
+
+| Concept                     | Description                            |
+| --------------------------- | -------------------------------------- |
+| `useState()`                | Hook to declare state                  |
+| `setState()`                | Function to update state               |
+| `onClick`, `onChange`, etc. | React's way of handling browser events |
+| Updating state              | Triggers component re-render           |
+
+---
+
+Would you like this content exported as a **PDF**, or should I now give you a **combined mini React hands-on app** that uses all the above concepts in one file?
+
+Let me know!
