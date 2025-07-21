@@ -1,0 +1,232 @@
+Great! Here's a complete and **detailed explanation for Day 13: React Routing**, designed to cover a **50-minute class**. This includes all major concepts, live examples, and a hands-on exercise plan. Let’s dive in:
+
+---
+
+# ✅ **Day 13 – React Routing (50 mins)**
+
+## 🕐 Agenda:
+
+| Time    | Topic                                                |
+| ------- | ---------------------------------------------------- |
+| 5 mins  | Introduction to Routing                              |
+| 15 mins | Basic Routing with `react-router-dom`                |
+| 10 mins | Route Parameters & `useParams`                       |
+| 10 mins | Navigation with `Link`, `NavLink`, and `useNavigate` |
+| 10 mins | Hands-on Activity: Mini React Router App             |
+
+---
+
+## 🎯 What is Routing in React?
+
+Routing allows users to navigate between different views (or components) in a single-page application without refreshing the page.
+
+React itself doesn’t handle routing. We use the **`react-router-dom`** library.
+
+---
+
+## ⚙️ Installing React Router
+
+```bash
+npm install react-router-dom
+```
+
+Or with Vite:
+
+```bash
+npm i react-router-dom
+```
+
+---
+
+## 📦 Folder Structure Suggestion
+
+```
+src/
+├── components/
+│   └── Navbar.jsx
+├── pages/
+│   ├── Home.jsx
+│   ├── About.jsx
+│   ├── Contact.jsx
+│   └── UserProfile.jsx
+├── App.jsx
+└── main.jsx
+```
+
+---
+
+## 🧭 Step-by-Step Routing Setup
+
+### 1. Wrap the app in `BrowserRouter`
+
+**`main.jsx`**
+
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import { BrowserRouter } from 'react-router-dom';
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+);
+```
+
+---
+
+### 2. Define Routes
+
+**`App.jsx`**
+
+```jsx
+import { Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import Navbar from './components/Navbar';
+
+function App() {
+  return (
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </>
+  );
+}
+export default App;
+```
+
+---
+
+### 3. Create Pages
+
+**`Home.jsx`**
+
+```jsx
+export default function Home() {
+  return <h1>Welcome to the Home Page</h1>;
+}
+```
+
+Create `About.jsx` and `Contact.jsx` similarly.
+
+---
+
+### 4. Add Navigation
+
+**`Navbar.jsx`**
+
+```jsx
+import { Link, NavLink } from 'react-router-dom';
+import './Navbar.css';
+
+export default function Navbar() {
+  return (
+    <nav>
+      <NavLink to="/" className={({ isActive }) => isActive ? 'active' : ''}>Home</NavLink>
+      <NavLink to="/about" className={({ isActive }) => isActive ? 'active' : ''}>About</NavLink>
+      <NavLink to="/contact" className={({ isActive }) => isActive ? 'active' : ''}>Contact</NavLink>
+    </nav>
+  );
+}
+```
+
+---
+
+## 🔁 Route Parameters
+
+**Dynamic routing for profile pages:**
+
+**`App.jsx`**
+
+```jsx
+<Route path="/user/:username" element={<UserProfile />} />
+```
+
+**`UserProfile.jsx`**
+
+```jsx
+import { useParams } from 'react-router-dom';
+
+export default function UserProfile() {
+  const { username } = useParams();
+  return <h2>Welcome, {username}</h2>;
+}
+```
+
+---
+
+## 🔄 Programmatic Navigation
+
+**Use `useNavigate` hook:**
+
+```jsx
+import { useNavigate } from 'react-router-dom';
+
+function Contact() {
+  const navigate = useNavigate();
+
+  const goToHome = () => {
+    navigate('/');
+  };
+
+  return (
+    <>
+      <h1>Contact Page</h1>
+      <button onClick={goToHome}>Go Home</button>
+    </>
+  );
+}
+```
+
+---
+
+## ✅ Summary of Key Components
+
+| Component              | Use                       |
+| ---------------------- | ------------------------- |
+| `<BrowserRouter>`      | Router wrapper            |
+| `<Routes>`             | Parent for all `<Route>`  |
+| `<Route>`              | Each route config         |
+| `<Link>` / `<NavLink>` | Navigation links          |
+| `useParams()`          | Read dynamic parameters   |
+| `useNavigate()`        | Navigate programmatically |
+
+---
+
+## ✋ Hands-on Activity: Mini React Router App
+
+🧩 **Create a mini-site with 4 routes:**
+
+* Home (Welcome message)
+* About (Brief description)
+* Contact (with button to go home)
+* User Profile (dynamic name in URL)
+
+📚 **Tasks:**
+
+1. Set up routes using `react-router-dom`.
+2. Use `NavLink` to highlight active links.
+3. Create a button in Contact page to navigate to Home.
+4. Add a route with dynamic username and display it.
+5. Make it visually appealing with basic CSS.
+
+---
+
+## 💡 Bonus Challenge (if time):
+
+Create a **404 Not Found Page**:
+
+```jsx
+<Route path="*" element={<h2>404 - Page not found</h2>} />
+```
+
+---
+
+Let me know if you'd like a downloadable **PDF** or a **live demo preview** code with styling included.
